@@ -39,7 +39,7 @@ class App extends React.Component {
 	// Opening of the navbar : this function is used to change isOpenNavBar state to true or false
 	componentDidMount() {
 		var ctx = this;
-		fetch('http://localhost:5000/movies')
+		fetch('/movies')
 			.then(function(response) {
 				return response.json();
 			})
@@ -51,7 +51,7 @@ class App extends React.Component {
 				console.log('Request failed', error);
 			});
 
-		fetch('http://localhost:5000/mymovies')
+		fetch('/mymovies')
 			.then(function(response) {
 				return response.json();
 			})
