@@ -109,7 +109,7 @@ class App extends React.Component {
 		var movieList = this.state.movies.map((movie, i) => {
 			var isliked = false;
 			for (var x = 0; x < this.state.moviesLiked.length; x++) {
-				if (movie.id == this.state.moviesLiked[x].idMovieDB) {
+				if (movie.id === this.state.moviesLiked[x].idMovieDB) {
 					isliked = true;
 					break;
 				}
@@ -192,6 +192,19 @@ class App extends React.Component {
 				<Container>
 					<Row>{movieList}</Row>
 				</Container>
+				<div
+					style={{
+						width: '100vw',
+						display: 'flex',
+						justifyContent: 'center',
+						marginBottom: '20px',
+						fontWeight: 300,
+					}}
+				>
+					<a href='https://github.com/AvilaAi/mymoviz' style={{ color: 'gray' }}>
+						--- See the code ---
+					</a>
+				</div>
 			</div>
 		);
 	}
