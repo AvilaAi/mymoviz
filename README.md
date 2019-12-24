@@ -2,6 +2,6 @@
 
 Plateforme avec les derniers films en temps réel
 
-Stack : ReactJS, JSX, MongoDB, RestAPI
+Stack : ReactJS, MongoDB, RestAPI
 
 https://my-moviz.herokuapp.com/
