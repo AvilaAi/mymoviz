@@ -19,13 +19,13 @@ export default class Movie extends React.Component {
 			liked: !this.state.liked,
 		});
 		if (!this.state.liked) {
-			fetch('http://localhost:3000/mymovies', {
+			fetch('/mymovies', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: `name=${this.props.movieName}&desc=${this.props.movieDesc}&img=${this.props.movieImg}&id=${this.props.idMovieDB}`,
 			});
 		} else {
-			fetch(`http://localhost:3000/mymovies/${this.props.idMovieDB}`, {
+			fetch(`/mymovies/${this.props.idMovieDB}`, {
 				method: 'DELETE',
 			});
 		}
