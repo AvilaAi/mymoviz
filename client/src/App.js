@@ -30,7 +30,6 @@ class App extends React.Component {
 			viewOnlyLike: false,
 			movieLikedname: [],
 			movies: [],
-			moviesLiked: [],
 		};
 		this.handleClickLikeOn = this.handleClickLikeOn.bind(this);
 		this.handleClickLikeOff = this.handleClickLikeOff.bind(this);
@@ -45,7 +44,6 @@ class App extends React.Component {
 			})
 			.then(function(data) {
 				ctx.setState({ movies: data.result });
-				console.log('===allFILMs', ctx.state.movies);
 			})
 			.catch(function(error) {
 				console.log('Request failed', error);
@@ -60,18 +58,17 @@ class App extends React.Component {
 					return movie.title;
 				});
 				ctx.setState({
-					moviesLiked: movies.result,
 					movieLikedname: moviesName,
 				});
-				console.log('=====>>>>movieLikedBDD', ctx.state.moviesLiked);
 			})
 			.catch(function(error) {});
 	}
+	
 	likeClick(name, liked) {
 		var movieLikedCopy = [...this.state.movieLikedname];
 		console.log(name, liked);
 		const index = movieLikedCopy.indexOf(name);
-		if (liked) {
+		if (liked && index === -1) {
 			movieLikedCopy.push(name);
 		} else {
 			movieLikedCopy.splice(index, 1);
@@ -107,12 +104,11 @@ class App extends React.Component {
 
 	render() {
 		var movieList = this.state.movies.map((movie, i) => {
-			var isliked = false;
-			for (var x = 0; x < this.state.moviesLiked.length; x++) {
-				if (movie.id === this.state.moviesLiked[x].idMovieDB) {
-					isliked = true;
-					break;
-				}
+			var isliked;
+			if (this.state.movieLikedname.indexOf(movie.title) === -1) {
+				isliked = false;
+			} else {
+				isliked = true;
 			}
 
 			return (
